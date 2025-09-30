@@ -2,11 +2,11 @@
 # Start Ollama server in the background
 ollama serve &
 
-# Wait a few seconds for the server to start
+# Wait for server to boot
 sleep 5
 
-# Pull the model
-ollama pull llava
+# Pull the model (only first time, then cached in volume)
+ollama pull llava || true
 
-# Keep server running in foreground
+# Keep server in foreground
 wait
