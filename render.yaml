@@ -4,5 +4,5 @@ services:
     env: docker
     plan: free
     disk:
-      mountPath: /mnt/data
+      mountPath: /root/.ollama/models
       sizeGB: 5
