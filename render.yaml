@@ -3,3 +3,6 @@ services:
     name: ai_agent
     env: docker
     plan: free
+    disk:
+      mountPath: /mnt/data
+      sizeGB: 5
