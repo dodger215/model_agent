@@ -1,13 +1,16 @@
 #!/bin/sh
+set -e
 
-# Start Ollama server (it listens on 0.0.0.0 by default inside Docker)
+# Start Ollama server
 ollama serve &
 
 # Wait for server to start
 sleep 5
 
-# Pull LLaVA into the persistent directory (mounted to /root/.ollama/models)
+# Pull model (optional)
 ollama pull llava || true
 
-# Keep container running
+# Forward Railway public port to Ollama internal port
+socat TCP-LISTEN:${PORT:-8080},fork TCP:localhost:11434 &
+
 wait
